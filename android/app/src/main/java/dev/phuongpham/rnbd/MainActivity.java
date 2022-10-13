@@ -1,8 +1,11 @@
-package com.reactnativebigdipper;
+package dev.phuongpham.rnbd;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.ReactRootView;
+
+import android.os.Bundle; // <- react-native-bootsplash
+import com.zoontek.rnbootsplash.RNBootSplash; // <- react-native-bootsplash
 
 public class MainActivity extends ReactActivity {
 
@@ -13,6 +16,12 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "ReactNativeBigDipper";
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    RNBootSplash.init(this); // <- react-native-bootsplash
+    super.onCreate(savedInstanceState); // or super.onCreate(null) with react-native-screens
   }
 
   /**

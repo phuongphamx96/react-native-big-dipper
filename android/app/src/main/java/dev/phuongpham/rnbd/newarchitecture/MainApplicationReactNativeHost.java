@@ -1,4 +1,4 @@
-package com.reactnativebigdipper.newarchitecture;
+package dev.phuongpham.rnbd.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.reactnativebigdipper.BuildConfig;
-import com.reactnativebigdipper.newarchitecture.components.MainComponentsRegistry;
-import com.reactnativebigdipper.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import dev.phuongpham.rnbd.BuildConfig;
+import dev.phuongpham.rnbd.newarchitecture.components.MainComponentsRegistry;
+import dev.phuongpham.rnbd.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.reactnativebigdipper.newarchitecture.modules;
+package dev.phuongpham.rnbd.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
