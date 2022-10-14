@@ -36,6 +36,7 @@ module.exports = {
         'simple-import-sort/exports': 'error',
         'no-shadow': 'off',
         'no-undef': 'off',
+        'arrow-body-style': ['error', 'always'],
       },
     },
   ],

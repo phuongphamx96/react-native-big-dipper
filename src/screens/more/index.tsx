@@ -2,12 +2,12 @@ import { memo } from 'react';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-const Overview = () => {
+const More = () => {
   return (
     <SafeAreaView>
-      <Text>Overview</Text>
+      <Text>More</Text>
     </SafeAreaView>
   );
 };
 
-export default memo(Overview);
+export default memo(More);

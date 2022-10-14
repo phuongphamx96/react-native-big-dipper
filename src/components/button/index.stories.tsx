@@ -1,5 +1,4 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react-native';
-import React from 'react';
 import { Button, ButtonProps } from 'react-native';
 
 const ButtonMeta: ComponentMeta<typeof Button> = {
@@ -13,4 +12,6 @@ export default ButtonMeta;
 
 type ButtonStory = ComponentStory<typeof Button>;
 
-export const Basic: ButtonStory = (args: ButtonProps) => <Button {...args} />;
+export const Basic: ButtonStory = (args: ButtonProps) => {
+  return <Button {...args} />;
+};

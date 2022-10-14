@@ -21,7 +21,6 @@ module.exports = {
         ],
         alias: {
           '@rnbd/components': './src/components',
-          '@rnbd/configs': './src/configs',
           '@rnbd/navigation': './src/navigation',
           '@rnbd/screens': './src/screens',
           '@rnbd/utils': './src/utils',

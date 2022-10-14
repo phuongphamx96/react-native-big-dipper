@@ -1,15 +1,17 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { OverviewScreen } from '@rnbd/screens';
 import { memo } from 'react';
 
-import { OVERVIEW_SCREEN } from './utils';
+import { BottomTab } from './components';
+import { BOTTOM_TAB, DefaultScreenOptions } from './utils';
 
-const Stack = createNativeStackNavigator();
+const { Navigator, Screen } = createNativeStackNavigator();
 
-const AppStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name={OVERVIEW_SCREEN} component={OverviewScreen} />
-  </Stack.Navigator>
-);
+const AppStack = () => {
+  return (
+    <Navigator screenOptions={DefaultScreenOptions}>
+      <Screen name={BOTTOM_TAB} component={BottomTab} />
+    </Navigator>
+  );
+};
 
 export default memo(AppStack);
