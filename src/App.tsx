@@ -1,3 +1,5 @@
+import { NavigationContainer } from '@react-navigation/native';
+import { AppStack } from '@rnbd/navigation';
 import { useEffect } from 'react';
 import { SystemBars } from 'react-native-bars';
 import { hide } from 'react-native-bootsplash';
@@ -11,6 +13,9 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <SystemBars barStyle="dark-content" animated />
+      <NavigationContainer>
+        <AppStack />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };
