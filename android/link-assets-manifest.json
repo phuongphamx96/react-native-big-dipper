@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/LibreFranklin-Light.ttf",
+      "sha1": "23e3068bdc4ee06c1c0b95038f5c313f0d7182a4"
+    },
+    {
+      "path": "assets/fonts/LibreFranklin-Medium.ttf",
+      "sha1": "0aab708c82ef44bcbc39961c46e824021bd68dab"
+    },
+    {
+      "path": "assets/fonts/LibreFranklin-Regular.ttf",
+      "sha1": "ee2211d41828f35460e8938d40f2420e52efb5fc"
+    },
+    {
+      "path": "assets/fonts/LibreFranklin-Thin.ttf",
+      "sha1": "e0e9ab2c06ab420c6ff430be284cbc467c794c21"
+    }
+  ]
+}
