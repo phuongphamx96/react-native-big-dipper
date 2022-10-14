@@ -1,5 +1,5 @@
+import { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react-native';
 import { Button, ButtonProps } from 'react-native';
 
 const ButtonMeta: ComponentMeta<typeof Button> = {
