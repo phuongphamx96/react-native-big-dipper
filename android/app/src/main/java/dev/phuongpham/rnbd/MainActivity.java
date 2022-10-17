@@ -9,6 +9,9 @@ import com.facebook.react.ReactRootView;
 import com.zoontek.rnbootsplash.RNBootSplash; // <- react-native-bootsplash
 import com.zoontek.rnbars.RNBars; // <- react-native-bars
 
+import android.content.Intent; // <- react-native-orientation-locker
+import android.content.res.Configuration; // <- react-native-orientation-locker
+
 public class MainActivity extends ReactActivity {
 
   /**
@@ -25,6 +28,15 @@ public class MainActivity extends ReactActivity {
     RNBootSplash.init(this); // <- react-native-bootsplash
     RNBars.init(this, "dark-content"); // <- react-native-bars
     super.onCreate(null); // <- react-native-screens
+  }
+
+  // react-native-orientation-locker
+  @Override
+  public void onConfigurationChanged(Configuration newConfig) {
+    super.onConfigurationChanged(newConfig);
+    Intent intent = new Intent("onConfigurationChanged");
+    intent.putExtra("newConfig", newConfig);
+    this.sendBroadcast(intent);
   }
 
   /**

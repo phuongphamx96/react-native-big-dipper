@@ -1,9 +1,7 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { useState } from 'react';
+import { equals } from 'ramda';
 
 export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
-  const [index, setIndex] = useState(0);
-
   const routes = [
     {
       key: 'overview',
@@ -19,7 +17,7 @@ export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
   ];
 
   const onIndexChange = (newIndex: number) => {
-    const isFocused = state.index === newIndex;
+    const isFocused = equals(state.index, newIndex);
     const newRoute = state.routes[newIndex];
 
     const event = navigation.emit({
@@ -30,12 +28,11 @@ export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
 
     if (!isFocused && !event.defaultPrevented) {
       navigation.navigate(newRoute.name);
-      setIndex(newIndex);
     }
   };
 
   return {
-    navigationState: { index, routes },
+    navigationState: { index: state.index, routes },
     onIndexChange,
   };
 };

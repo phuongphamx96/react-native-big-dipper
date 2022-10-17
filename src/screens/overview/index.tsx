@@ -1,12 +1,12 @@
+import { Screen } from '@rnbd/components';
 import { memo } from 'react';
-import { Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Text } from 'react-native-paper';
 
 const Overview = () => {
   return (
-    <SafeAreaView>
+    <Screen>
       <Text>Overview</Text>
-    </SafeAreaView>
+    </Screen>
   );
 };
 

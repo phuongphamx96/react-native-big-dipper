@@ -1,31 +1,43 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { AppStack } from '@rnbd/navigation';
-import { useEffect } from 'react';
+import { Fragment, memo } from 'react';
 import { SystemBars } from 'react-native-bars';
-import { hide } from 'react-native-bootsplash';
 import { Provider as PaperProvider } from 'react-native-paper';
 import {
   initialWindowMetrics,
   SafeAreaProvider,
 } from 'react-native-safe-area-context';
+import { RecoilRoot } from 'recoil';
+
+import useApp from './hooks';
+import { createTheme } from './utils';
 
 const App = () => {
-  useEffect(() => {
-    hide({ fade: true });
-  }, []);
+  const { isDark } = useApp();
 
   return (
-    <>
-      <SystemBars barStyle="dark-content" animated />
+    <Fragment>
+      <SystemBars
+        barStyle={isDark ? 'light-content' : 'dark-content'}
+        animated
+      />
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <PaperProvider>
+        <PaperProvider theme={createTheme(isDark)}>
           <NavigationContainer>
             <AppStack />
           </NavigationContainer>
         </PaperProvider>
       </SafeAreaProvider>
-    </>
+    </Fragment>
   );
 };
 
-export default App;
+const RNBD = () => {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  );
+};
+
+export default memo(RNBD);

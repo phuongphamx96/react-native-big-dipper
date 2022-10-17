@@ -16,7 +16,10 @@ const BottomTab = () => {
   };
 
   return (
-    <Navigator screenOptions={{ headerShown: false }} tabBar={renderTabBar}>
+    <Navigator
+      screenOptions={{ headerShown: false }}
+      backBehavior="history"
+      tabBar={renderTabBar}>
       <Screen name={OVERVIEW_SCREEN} component={OverviewScreen} />
       <Screen name={MORE_SCREEN} component={MoreScreen} />
     </Navigator>
