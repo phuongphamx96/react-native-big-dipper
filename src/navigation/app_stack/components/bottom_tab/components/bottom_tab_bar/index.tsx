@@ -1,14 +1,14 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { noop } from '@rnbd/utils/common';
 import { useTheme } from '@rnbd/utils/theme';
-import { memo } from 'react';
+import { FC, memo } from 'react';
 import { StyleSheet } from 'react-native';
 import { BottomNavigation } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { useBottomTabBar } from './hooks';
 
-const BottomTabBar: React.FC<BottomTabBarProps> = (props) => {
+const BottomTabBar: FC<BottomTabBarProps> = (props) => {
   const { colors } = useTheme();
   const { navigationState, onIndexChange } = useBottomTabBar(props);
 
