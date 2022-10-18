@@ -1,27 +1,27 @@
 import { Text, useBaseDialog } from '@rnbd/components';
-import { DateFormat } from '@rnbd/recoil/settings';
+import { FontFamily } from '@rnbd/recoil/settings';
 import { Fragment } from 'react';
 import { StyleSheet } from 'react-native';
 import { RadioButton, TouchableRipple } from 'react-native-paper';
 
-import { useDateFormat } from './hooks';
+import { useSelectFontFamily } from './hooks';
 
-const useSelectDateFormatDialog = () => {
-  const { options, dateFormat, onSelectDateFormat } = useDateFormat();
+const useSelectFontFamilyDialog = () => {
+  const { options, fontFamily, onSelectFontFamily } = useSelectFontFamily();
 
-  const onSelect = (value: DateFormat) => {
-    onSelectDateFormat(value);
-    SelectDateFormatDialog.close();
+  const onSelect = (value: FontFamily) => {
+    onSelectFontFamily(value);
+    SelectFontFamilyDialog.close();
   };
 
-  const SelectDateFormatDialog = useBaseDialog({
-    title: { children: 'Select date format' },
+  const SelectFontFamilyDialog = useBaseDialog({
+    title: { children: 'Select font family' },
     content: {
       children: (
         <RadioButton.Group
           // @ts-ignore
           onValueChange={onSelect}
-          value={dateFormat}>
+          value={fontFamily}>
           {options.map(({ label, value }, index) => {
             return (
               <TouchableRipple
@@ -44,7 +44,7 @@ const useSelectDateFormatDialog = () => {
     },
   });
 
-  return SelectDateFormatDialog;
+  return SelectFontFamilyDialog;
 };
 
 const styles = StyleSheet.create({
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default useSelectDateFormatDialog;
+export default useSelectFontFamilyDialog;

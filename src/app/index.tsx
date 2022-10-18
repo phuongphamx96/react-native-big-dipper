@@ -13,7 +13,7 @@ import useApp from './hooks';
 import { createTheme } from './utils';
 
 const App = () => {
-  const { isDark } = useApp();
+  const { isDark, fontFamily } = useApp();
 
   return (
     <Fragment>
@@ -22,7 +22,7 @@ const App = () => {
         animated
       />
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <PaperProvider theme={createTheme(isDark)}>
+        <PaperProvider theme={createTheme(isDark, fontFamily)}>
           <NavigationContainer>
             <AppStack />
           </NavigationContainer>

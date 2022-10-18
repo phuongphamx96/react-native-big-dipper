@@ -1,4 +1,4 @@
-import { ListItemProps } from 'react-native-paper';
+import { ListItemProps } from '@rnbd/components/list/components/list_item/types';
 
 export type Section = {
   title: string;

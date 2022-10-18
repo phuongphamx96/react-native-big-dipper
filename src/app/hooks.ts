@@ -3,10 +3,16 @@ import { orientationTypeState } from '@rnbd/recoil/app';
 import {
   DateFormat,
   dateFormatState,
+  FontFamily,
+  fontFamilyState,
   Theme,
   themeState,
 } from '@rnbd/recoil/settings';
-import { DATE_FORMAT_KEY, THEME_KEY } from '@rnbd/utils/constants/storage_keys';
+import {
+  DATE_FORMAT_KEY,
+  FONT_FAMILY_KEY,
+  THEME_KEY,
+} from '@rnbd/utils/constants/storage_keys';
 import { equals } from 'ramda';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
@@ -16,11 +22,13 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 
 export const useApp = () => {
   const deviceColorScheme = useColorScheme();
-  const [theme, setTheme] = useRecoilState(themeState);
   const setOrientationType = useSetRecoilState(orientationTypeState);
-  const setDateFormat = useSetRecoilState(dateFormatState);
 
-  const isDark = equals(theme, Theme.DEVICE)
+  const [theme, setTheme] = useRecoilState(themeState);
+  const setDateFormat = useSetRecoilState(dateFormatState);
+  const [fontFamily, setFontFamily] = useRecoilState(fontFamilyState);
+
+  const isDark = equals(theme, Theme.SYSTEM_DEFAULT)
     ? equals(deviceColorScheme, Theme.DARK)
     : equals(theme, Theme.DARK);
 
@@ -28,10 +36,16 @@ export const useApp = () => {
     const initApp = async () => {
       try {
         // restore saved settings
-        const [[, savedTheme], [, savedDateFormat]] =
-          await AsyncStorage.multiGet([THEME_KEY, DATE_FORMAT_KEY]);
+        const [[, savedTheme], [, savedDateFormat], [, savedFontFamily]] =
+          await AsyncStorage.multiGet([
+            THEME_KEY,
+            DATE_FORMAT_KEY,
+            FONT_FAMILY_KEY,
+          ]);
         savedTheme && setTheme(savedTheme as Theme);
         savedDateFormat && setDateFormat(savedDateFormat as DateFormat);
+        savedFontFamily && setFontFamily(savedFontFamily as FontFamily);
+
         hide({ fade: true });
       } catch (error) {
         console.error('initApp', error);
@@ -46,7 +60,7 @@ export const useApp = () => {
     setOrientationType(orientationType);
   });
 
-  return { isDark };
+  return { isDark, fontFamily };
 };
 
 export default useApp;

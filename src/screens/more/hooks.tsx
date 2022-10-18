@@ -1,11 +1,16 @@
-import { dateFormatState, themeState } from '@rnbd/recoil/settings';
+import {
+  dateFormatState,
+  fontFamilyState,
+  themeState,
+} from '@rnbd/recoil/settings';
 import { indexBy, prop } from 'ramda';
-import { List } from 'react-native-paper';
 import { useRecoilValue } from 'recoil';
 
 import {
   useDateFormatOptions,
+  useFontFamilyOptions,
   useSelectDateFormatDialog,
+  useSelectFontFamilyDialog,
   useSelectThemeDialog,
   useThemeOptions,
 } from './components';
@@ -20,26 +25,36 @@ export const useMore = () => {
   const dateFormat = useRecoilValue(dateFormatState);
   const SelectDateFormatDialog = useSelectDateFormatDialog();
 
+  const fontFamilyOptions = useFontFamilyOptions();
+  const fontFamily = useRecoilValue(fontFamilyState);
+  const SelectFontFamilyDialog = useSelectFontFamilyDialog();
+
   const sections: Section[] = [
     {
       title: 'Settings',
       items: [
         {
-          title: 'Theme',
-          description: indexBy(prop('value'), themeOptions)[theme].label,
-          left: () => {
-            return <List.Icon icon="theme-light-dark" />;
-          },
+          formattedTitle: 'Theme',
+          formattedDescription: indexBy(prop('value'), themeOptions)[theme]
+            .label,
+          leftIcon: 'theme-light-dark',
           onPress: SelectThemeDialog.open,
         },
         {
-          title: 'Date format',
-          description: indexBy(prop('value'), dateFormatOptions)[dateFormat]
-            .label,
-          left: () => {
-            return <List.Icon icon="clock-outline" />;
-          },
+          formattedTitle: 'Date format',
+          formattedDescription: indexBy(prop('value'), dateFormatOptions)[
+            dateFormat
+          ].label,
+          leftIcon: 'clock-outline',
           onPress: SelectDateFormatDialog.open,
+        },
+        {
+          formattedTitle: 'Font family',
+          formattedDescription: indexBy(prop('value'), fontFamilyOptions)[
+            fontFamily
+          ].label,
+          leftIcon: 'format-font',
+          onPress: SelectFontFamilyDialog.open,
         },
       ],
     },
@@ -49,5 +64,6 @@ export const useMore = () => {
     sections,
     SelectThemeDialog,
     SelectDateFormatDialog,
+    SelectFontFamilyDialog,
   };
 };

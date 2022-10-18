@@ -2,8 +2,12 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/LibreFranklin-Light.ttf",
-      "sha1": "23e3068bdc4ee06c1c0b95038f5c313f0d7182a4"
+      "path": "assets/fonts/GoogleSans-Medium.ttf",
+      "sha1": "7691cf957a24f4be176bc9c7895c2909f914214a"
+    },
+    {
+      "path": "assets/fonts/GoogleSans-Regular.ttf",
+      "sha1": "e67db00713e957798fbac2b87ad5c0d18d2dcf32"
     },
     {
       "path": "assets/fonts/LibreFranklin-Medium.ttf",
@@ -14,8 +18,12 @@
       "sha1": "ee2211d41828f35460e8938d40f2420e52efb5fc"
     },
     {
-      "path": "assets/fonts/LibreFranklin-Thin.ttf",
-      "sha1": "e0e9ab2c06ab420c6ff430be284cbc467c794c21"
+      "path": "assets/fonts/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
     }
   ]
 }

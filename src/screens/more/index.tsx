@@ -1,11 +1,17 @@
 import { Screen, ScrollView } from '@rnbd/components';
+import { List } from '@rnbd/components';
 import { Fragment, memo } from 'react';
-import { List, Portal } from 'react-native-paper';
+import { List as PaperList, Portal } from 'react-native-paper';
 
 import { useMore } from './hooks';
 
 const More = () => {
-  const { sections, SelectThemeDialog, SelectDateFormatDialog } = useMore();
+  const {
+    sections,
+    SelectThemeDialog,
+    SelectDateFormatDialog,
+    SelectFontFamilyDialog,
+  } = useMore();
 
   return (
     <Fragment>
@@ -13,11 +19,11 @@ const More = () => {
         <ScrollView>
           {sections.map((section, sectionIndex) => {
             return (
-              <List.Section key={sectionIndex} title={section.title}>
+              <PaperList.Section key={sectionIndex} title={section.title}>
                 {section.items.map((sectionItem, sectionItemIndex) => {
                   return <List.Item key={sectionItemIndex} {...sectionItem} />;
                 })}
-              </List.Section>
+              </PaperList.Section>
             );
           })}
         </ScrollView>
@@ -25,6 +31,7 @@ const More = () => {
       <Portal>
         {SelectThemeDialog.render()}
         {SelectDateFormatDialog.render()}
+        {SelectFontFamilyDialog.render()}
       </Portal>
     </Fragment>
   );

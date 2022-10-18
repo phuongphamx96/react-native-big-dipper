@@ -29,3 +29,16 @@ export const dateFormatState = selector({
     );
   },
 });
+
+export const fontFamilyState = selector({
+  key: 'fontFamilyState',
+  get: ({ get }) => {
+    return get(settingsAtom).fontFamily;
+  },
+  set: ({ get, set }, fontFamily) => {
+    set(
+      settingsAtom,
+      mergeDeepRight(get(settingsAtom), { fontFamily }) as SettingsState,
+    );
+  },
+});

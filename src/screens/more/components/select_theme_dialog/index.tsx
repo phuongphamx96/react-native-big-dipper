@@ -1,8 +1,8 @@
-import { useBaseDialog } from '@rnbd/components';
+import { Text, useBaseDialog } from '@rnbd/components';
 import { Theme } from '@rnbd/recoil/settings';
 import { Fragment } from 'react';
 import { StyleSheet } from 'react-native';
-import { RadioButton, Text, TouchableRipple } from 'react-native-paper';
+import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useSelectTheme } from './hooks';
 

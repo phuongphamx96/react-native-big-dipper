@@ -17,7 +17,7 @@ export const useThemeOptions = (): ThemeOption[] => {
       label: 'Dark',
     },
     {
-      value: Theme.DEVICE,
+      value: Theme.SYSTEM_DEFAULT,
       label: 'System default',
     },
   ];

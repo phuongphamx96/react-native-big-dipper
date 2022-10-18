@@ -1,6 +1,7 @@
+import Button from '@rnbd/components/button';
 import { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { Button, Dialog } from 'react-native-paper';
+import { Dialog } from 'react-native-paper';
 
 import { BaseDialogProps } from './types';
 

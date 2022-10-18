@@ -1,10 +1,15 @@
 import { themeFromSourceColor } from '@material/material-color-utilities';
+import { FontFamily } from '@rnbd/recoil/settings';
 import { rgba2rgb } from '@rnbd/utils/color';
 import Color from 'color';
-import { mapObjIndexed, mergeDeepRight } from 'ramda';
+import { clone, equals, mapObjIndexed, mergeDeepRight } from 'ramda';
 import { MD3DarkTheme, MD3LightTheme, MD3Theme } from 'react-native-paper';
+import { MD3Typescale } from 'react-native-paper/lib/typescript/types';
 
-export const createTheme = (isDark: boolean): MD3Theme => {
+export const createTheme = (
+  isDark: boolean,
+  fontFamily: FontFamily,
+): MD3Theme => {
   const paperTheme = isDark ? MD3DarkTheme : MD3LightTheme;
 
   const {
@@ -16,7 +21,18 @@ export const createTheme = (isDark: boolean): MD3Theme => {
     return Color(item).hexa();
   }, (isDark ? dark : light).toJSON());
 
+  const customFonts = clone(paperTheme.fonts);
+
+  if (!equals(fontFamily, FontFamily.SYSTEM_DEFAULT)) {
+    Object.keys(customFonts).forEach((key) => {
+      customFonts[
+        key as keyof MD3Typescale
+      ].fontFamily = `${fontFamily}-Regular`;
+    });
+  }
+
   return mergeDeepRight(paperTheme, {
+    fonts: customFonts,
     colors: {
       ...colors,
       elevation: isDark
