@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Language, languageState } from '@rnbd/recoil/settings';
 import { LANGUAGE_KEY } from '@rnbd/utils/constants/storage_keys';
+import { changeLanguage } from 'i18next';
 import { equals } from 'ramda';
 import { useRecoilState } from 'recoil';
 
@@ -28,6 +29,7 @@ export const useSelectLanguage = () => {
       if (!equals(language, newLanguage)) {
         await AsyncStorage.setItem(LANGUAGE_KEY, newLanguage);
         setLanguage(newLanguage);
+        changeLanguage(newLanguage);
       }
     } catch (error) {
       console.error('onSelectLanguage', error);

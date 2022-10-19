@@ -16,6 +16,7 @@ import {
   LANGUAGE_KEY,
   THEME_KEY,
 } from '@rnbd/utils/constants/storage_keys';
+import { changeLanguage } from 'i18next';
 import { equals } from 'ramda';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
@@ -51,10 +52,15 @@ export const useApp = () => {
           DATE_FORMAT_KEY,
           FONT_FAMILY_KEY,
         ]);
+
         savedTheme && setTheme(savedTheme as Theme);
-        savedLanguage && setLanguage(savedLanguage as Language);
         savedDateFormat && setDateFormat(savedDateFormat as DateFormat);
         savedFontFamily && setFontFamily(savedFontFamily as FontFamily);
+
+        if (savedLanguage) {
+          setLanguage(savedLanguage as Language);
+          changeLanguage(savedLanguage);
+        }
 
         hide({ fade: true });
       } catch (error) {
