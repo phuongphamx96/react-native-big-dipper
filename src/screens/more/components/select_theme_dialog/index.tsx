@@ -1,12 +1,14 @@
 import { Text, useBaseDialog } from '@rnbd/components';
 import { Theme } from '@rnbd/recoil/settings';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useSelectTheme } from './hooks';
 
 const useSelectThemeDialog = () => {
+  const { t } = useTranslation();
   const { options, theme, onSelectTheme } = useSelectTheme();
 
   const onSelect = (value: Theme) => {
@@ -15,7 +17,7 @@ const useSelectThemeDialog = () => {
   };
 
   const SelectThemeDialog = useBaseDialog({
-    title: { children: 'Select theme' },
+    title: { children: t('screen.more.selectThemeDialog.title') },
     content: {
       children: (
         <RadioButton.Group

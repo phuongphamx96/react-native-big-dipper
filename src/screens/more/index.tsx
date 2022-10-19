@@ -1,5 +1,4 @@
-import { Screen, ScrollView } from '@rnbd/components';
-import { List } from '@rnbd/components';
+import { List, Screen, ScrollView } from '@rnbd/components';
 import { Fragment, memo } from 'react';
 import { List as PaperList, Portal } from 'react-native-paper';
 
@@ -9,6 +8,7 @@ const More = () => {
   const {
     sections,
     SelectThemeDialog,
+    SelectLanguageDialog,
     SelectDateFormatDialog,
     SelectFontFamilyDialog,
   } = useMore();
@@ -30,6 +30,7 @@ const More = () => {
       </Screen>
       <Portal>
         {SelectThemeDialog.render()}
+        {SelectLanguageDialog.render()}
         {SelectDateFormatDialog.render()}
         {SelectFontFamilyDialog.render()}
       </Portal>

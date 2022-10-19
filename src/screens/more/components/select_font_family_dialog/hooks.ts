@@ -2,11 +2,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontFamily, fontFamilyState } from '@rnbd/recoil/settings';
 import { FONT_FAMILY_KEY } from '@rnbd/utils/constants/storage_keys';
 import { equals } from 'ramda';
+import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 
 import { FontFamilyOption } from './types';
 
 export const useFontFamilyOptions = (): FontFamilyOption[] => {
+  const { t } = useTranslation();
+
   return [
     {
       value: FontFamily.GOOGLE_SANS,
@@ -22,7 +25,7 @@ export const useFontFamilyOptions = (): FontFamilyOption[] => {
     },
     {
       value: FontFamily.SYSTEM_DEFAULT,
-      label: 'System default',
+      label: t('screen.more.common.options.systemDefault'),
     },
   ];
 };

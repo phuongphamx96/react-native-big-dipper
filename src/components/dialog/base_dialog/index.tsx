@@ -1,5 +1,6 @@
 import Button from '@rnbd/components/button';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Dialog } from 'react-native-paper';
 
@@ -15,6 +16,8 @@ const useBaseDialog = ({
   onOpen,
   onClose,
 }: BaseDialogProps) => {
+  const { t } = useTranslation();
+
   const [visible, setVisible] = useState(false);
 
   const open = () => {
@@ -53,7 +56,9 @@ const useBaseDialog = ({
           />
         )}
         <Dialog.Actions {...actions}>
-          <Button onPress={close}>Close</Button>
+          <Button onPress={close}>
+            {t('component.dialog.baseDialog.actions.close')}
+          </Button>
           {actions?.children}
         </Dialog.Actions>
       </Dialog>

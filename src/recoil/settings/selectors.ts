@@ -1,3 +1,4 @@
+import i18n from '@rnbd/i18n';
 import { mergeDeepRight } from 'ramda';
 import { selector } from 'recoil';
 
@@ -13,6 +14,20 @@ export const themeState = selector({
     set(
       settingsAtom,
       mergeDeepRight(get(settingsAtom), { theme }) as SettingsState,
+    );
+  },
+});
+
+export const languageState = selector({
+  key: 'languageState',
+  get: ({ get }) => {
+    return get(settingsAtom).language;
+  },
+  set: ({ get, set }, language) => {
+    i18n.changeLanguage(language as string);
+    set(
+      settingsAtom,
+      mergeDeepRight(get(settingsAtom), { language }) as SettingsState,
     );
   },
 });

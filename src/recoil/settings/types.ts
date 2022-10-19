@@ -4,6 +4,11 @@ export enum Theme {
   SYSTEM_DEFAULT = 'default',
 }
 
+export enum Language {
+  ENGLISH = 'en',
+  VIETNAMESE = 'vi',
+}
+
 export enum DateFormat {
   LOCALE = 'locale',
   UTC = 'utc',
@@ -18,6 +23,7 @@ export enum FontFamily {
 
 export type SettingsState = {
   theme: Theme;
+  language: Language;
   dateFormat: DateFormat;
   fontFamily: FontFamily;
 };

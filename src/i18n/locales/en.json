@@ -1,0 +1,62 @@
+{
+  "component": {
+    "dialog": {
+      "baseDialog": {
+        "actions": {
+          "close": "Close"
+        }
+      }
+    }
+  },
+  "screen": {
+    "more": {
+      "common": {
+        "options": {
+          "systemDefault": "System default"
+        }
+      },
+      "sections": {
+        "settings": {
+          "items": {
+            "dateFormat": {
+              "title": "Date format"
+            },
+            "fontFamily": {
+              "title": "Font family"
+            },
+            "language": {
+              "title": "Language"
+            },
+            "theme": {
+              "title": "Theme"
+            }
+          },
+          "title": "Settings"
+        }
+      },
+      "selectDateFormatDialog": {
+        "options": {
+          "locale": "Locale"
+        },
+        "title": "Select date format"
+      },
+      "selectFontFamilyDialog": {
+        "title": "Select font family"
+      },
+      "SelectLanguageDialog": {
+        "title": "Select language"
+      },
+      "selectThemeDialog": {
+        "options": {
+          "dark": "Dark",
+          "light": "Light"
+        },
+        "title": "Select theme"
+      },
+      "title": "More"
+    },
+    "overview": {
+      "title": "Overview"
+    }
+  }
+}

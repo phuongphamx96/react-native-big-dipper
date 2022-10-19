@@ -1,29 +1,29 @@
 import { Text, useBaseDialog } from '@rnbd/components';
-import { FontFamily } from '@rnbd/recoil/settings';
+import { Language } from '@rnbd/recoil/settings';
 import { Fragment } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { RadioButton, TouchableRipple } from 'react-native-paper';
 
-import { useSelectFontFamily } from './hooks';
+import { useSelectLanguage } from './hooks';
 
-const useSelectFontFamilyDialog = () => {
+const useSelectLanguageDialog = () => {
   const { t } = useTranslation();
-  const { options, fontFamily, onSelectFontFamily } = useSelectFontFamily();
+  const { options, language, onSelectLanguage } = useSelectLanguage();
 
-  const onSelect = (value: FontFamily) => {
-    onSelectFontFamily(value);
-    SelectFontFamilyDialog.close();
+  const onSelect = (value: Language) => {
+    onSelectLanguage(value);
+    SelectLanguageDialog.close();
   };
 
-  const SelectFontFamilyDialog = useBaseDialog({
-    title: { children: t('screen.more.selectFontFamilyDialog.title') },
+  const SelectLanguageDialog = useBaseDialog({
+    title: { children: t('screen.more.SelectLanguageDialog.title') },
     content: {
       children: (
         <RadioButton.Group
           // @ts-ignore
           onValueChange={onSelect}
-          value={fontFamily}>
+          value={language}>
           {options.map(({ label, value }, index) => {
             return (
               <TouchableRipple
@@ -46,7 +46,7 @@ const useSelectFontFamilyDialog = () => {
     },
   });
 
-  return SelectFontFamilyDialog;
+  return SelectLanguageDialog;
 };
 
 const styles = StyleSheet.create({
@@ -60,4 +60,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default useSelectFontFamilyDialog;
+export default useSelectLanguageDialog;

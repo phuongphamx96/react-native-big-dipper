@@ -2,15 +2,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { DateFormat, dateFormatState } from '@rnbd/recoil/settings';
 import { DATE_FORMAT_KEY } from '@rnbd/utils/constants/storage_keys';
 import { equals } from 'ramda';
+import { useTranslation } from 'react-i18next';
 import { useRecoilState } from 'recoil';
 
 import { DateFormatOption } from './types';
 
 export const useDateFormatOptions = (): DateFormatOption[] => {
+  const { t } = useTranslation();
+
   return [
     {
       value: DateFormat.LOCALE,
-      label: 'Locale',
+      label: t('screen.more.selectDateFormatDialog.options.locale'),
     },
     {
       value: DateFormat.UTC,

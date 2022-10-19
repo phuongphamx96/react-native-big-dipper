@@ -5,12 +5,15 @@ import {
   dateFormatState,
   FontFamily,
   fontFamilyState,
+  Language,
+  languageState,
   Theme,
   themeState,
 } from '@rnbd/recoil/settings';
 import {
   DATE_FORMAT_KEY,
   FONT_FAMILY_KEY,
+  LANGUAGE_KEY,
   THEME_KEY,
 } from '@rnbd/utils/constants/storage_keys';
 import { equals } from 'ramda';
@@ -25,6 +28,7 @@ export const useApp = () => {
   const setOrientationType = useSetRecoilState(orientationTypeState);
 
   const [theme, setTheme] = useRecoilState(themeState);
+  const setLanguage = useSetRecoilState(languageState);
   const setDateFormat = useSetRecoilState(dateFormatState);
   const [fontFamily, setFontFamily] = useRecoilState(fontFamilyState);
 
@@ -36,13 +40,19 @@ export const useApp = () => {
     const initApp = async () => {
       try {
         // restore saved settings
-        const [[, savedTheme], [, savedDateFormat], [, savedFontFamily]] =
-          await AsyncStorage.multiGet([
-            THEME_KEY,
-            DATE_FORMAT_KEY,
-            FONT_FAMILY_KEY,
-          ]);
+        const [
+          [, savedTheme],
+          [, savedLanguage],
+          [, savedDateFormat],
+          [, savedFontFamily],
+        ] = await AsyncStorage.multiGet([
+          THEME_KEY,
+          LANGUAGE_KEY,
+          DATE_FORMAT_KEY,
+          FONT_FAMILY_KEY,
+        ]);
         savedTheme && setTheme(savedTheme as Theme);
+        savedLanguage && setLanguage(savedLanguage as Language);
         savedDateFormat && setDateFormat(savedDateFormat as DateFormat);
         savedFontFamily && setFontFamily(savedFontFamily as FontFamily);
 

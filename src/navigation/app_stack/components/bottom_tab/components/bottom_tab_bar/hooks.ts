@@ -1,17 +1,20 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { equals } from 'ramda';
+import { useTranslation } from 'react-i18next';
 
 export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
+  const { t } = useTranslation();
+
   const routes = [
     {
       key: 'overview',
-      title: 'Overview',
+      title: t('screen.overview.title'),
       focusedIcon: 'view-dashboard',
       unfocusedIcon: 'view-dashboard-outline',
     },
     {
       key: 'more',
-      title: 'More',
+      title: t('screen.more.title'),
       focusedIcon: 'forwardburger',
     },
   ];

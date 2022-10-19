@@ -1,12 +1,14 @@
 import { Text, useBaseDialog } from '@rnbd/components';
 import { DateFormat } from '@rnbd/recoil/settings';
 import { Fragment } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useDateFormat } from './hooks';
 
 const useSelectDateFormatDialog = () => {
+  const { t } = useTranslation();
   const { options, dateFormat, onSelectDateFormat } = useDateFormat();
 
   const onSelect = (value: DateFormat) => {
@@ -15,7 +17,7 @@ const useSelectDateFormatDialog = () => {
   };
 
   const SelectDateFormatDialog = useBaseDialog({
-    title: { children: 'Select date format' },
+    title: { children: t('screen.more.selectDateFormatDialog.title') },
     content: {
       children: (
         <RadioButton.Group
