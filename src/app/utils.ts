@@ -7,6 +7,12 @@ import Color from 'color';
 import { clone, equals, mapObjIndexed, mergeDeepRight } from 'ramda';
 import { MD3DarkTheme, MD3LightTheme, MD3Theme } from 'react-native-paper';
 
+const ALPHA_LEVEL1 = 0.05;
+const ALPHA_LEVEL2 = 0.08;
+const ALPHA_LEVEL3 = 0.11;
+const ALPHA_LEVEL4 = 0.12;
+const ALPHA_LEVEL5 = 0.14;
+
 export const createTheme = (
   isDark: boolean,
   fontFamily: FontFamily,
@@ -24,6 +30,15 @@ export const createTheme = (
 
   const customFonts = clone(paperTheme.fonts);
 
+  const RGBA_DARK = primary.tone(80);
+  const RGB_DARK = primary.tone(80);
+  const RGBA_LIGHT = primary.tone(40);
+  const RGB_LIGHT = primary.tone(99);
+
+  const getElevationColor = (rgba: number, rgb: number, alpha: number) => {
+    return rgba2rgb(Color(rgba).alpha(alpha), Color(rgb), isDark).string();
+  };
+
   if (!equals(fontFamily, FontFamily.SYSTEM_DEFAULT)) {
     Object.keys(customFonts).forEach((key) => {
       customFonts[key as TextVariant].fontFamily =
@@ -39,59 +54,19 @@ export const createTheme = (
       elevation: isDark
         ? {
             level0: 'transparent',
-            level1: rgba2rgb(
-              Color(primary.tone(80)).alpha(0.05),
-              Color(primary.tone(80)),
-              isDark,
-            ).string(),
-            level2: rgba2rgb(
-              Color(primary.tone(80)).alpha(0.08),
-              Color(primary.tone(80)),
-              isDark,
-            ).string(),
-            level3: rgba2rgb(
-              Color(primary.tone(80)).alpha(0.11),
-              Color(primary.tone(80)),
-              isDark,
-            ).string(),
-            level4: rgba2rgb(
-              Color(primary.tone(80)).alpha(0.12),
-              Color(primary.tone(80)),
-              isDark,
-            ).string(),
-            level5: rgba2rgb(
-              Color(primary.tone(80)).alpha(0.14),
-              Color(primary.tone(80)),
-              isDark,
-            ).string(),
+            level1: getElevationColor(RGBA_DARK, RGB_DARK, ALPHA_LEVEL1),
+            level2: getElevationColor(RGBA_DARK, RGB_DARK, ALPHA_LEVEL2),
+            level3: getElevationColor(RGBA_DARK, RGB_DARK, ALPHA_LEVEL3),
+            level4: getElevationColor(RGBA_DARK, RGB_DARK, ALPHA_LEVEL4),
+            level5: getElevationColor(RGBA_DARK, RGB_DARK, ALPHA_LEVEL5),
           }
         : {
             level0: 'transparent',
-            level1: rgba2rgb(
-              Color(primary.tone(40)).alpha(0.05),
-              Color(primary.tone(99)),
-              isDark,
-            ).string(),
-            level2: rgba2rgb(
-              Color(primary.tone(40)).alpha(0.08),
-              Color(primary.tone(99)),
-              isDark,
-            ).string(),
-            level3: rgba2rgb(
-              Color(primary.tone(40)).alpha(0.11),
-              Color(primary.tone(99)),
-              isDark,
-            ).string(),
-            level4: rgba2rgb(
-              Color(primary.tone(40)).alpha(0.12),
-              Color(primary.tone(99)),
-              isDark,
-            ).string(),
-            level5: rgba2rgb(
-              Color(primary.tone(40)).alpha(0.14),
-              Color(primary.tone(99)),
-              isDark,
-            ).string(),
+            level1: getElevationColor(RGBA_LIGHT, RGB_LIGHT, ALPHA_LEVEL1),
+            level2: getElevationColor(RGBA_LIGHT, RGB_LIGHT, ALPHA_LEVEL2),
+            level3: getElevationColor(RGBA_LIGHT, RGB_LIGHT, ALPHA_LEVEL3),
+            level4: getElevationColor(RGBA_LIGHT, RGB_LIGHT, ALPHA_LEVEL4),
+            level5: getElevationColor(RGBA_LIGHT, RGB_LIGHT, ALPHA_LEVEL5),
           },
     },
   });

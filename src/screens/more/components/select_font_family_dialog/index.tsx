@@ -7,7 +7,7 @@ import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useSelectFontFamily } from './hooks';
 
-const useSelectFontFamilyDialog = () => {
+export const useSelectFontFamilyDialog = () => {
   const { t } = useTranslation();
   const { options, fontFamily, onSelectFontFamily } = useSelectFontFamily();
 
@@ -59,5 +59,3 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
 });
-
-export default useSelectFontFamilyDialog;

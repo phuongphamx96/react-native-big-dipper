@@ -1,5 +1,5 @@
 import { FontFamily, fontFamilyState } from '@rnbd/recoil/settings';
-import { cond, equals } from 'ramda';
+import { equals } from 'ramda';
 import { MD3Theme, useTheme as usePaperTheme } from 'react-native-paper';
 import { useRecoilValue } from 'recoil';
 

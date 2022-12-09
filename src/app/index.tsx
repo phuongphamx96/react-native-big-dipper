@@ -9,11 +9,10 @@ import {
 } from 'react-native-safe-area-context';
 import { RecoilRoot } from 'recoil';
 
-import useApp from './hooks';
-import { createTheme } from './utils';
+import { useApp } from './hooks';
 
 const App = () => {
-  const { isDark, fontFamily } = useApp();
+  const { isDark, paperTheme } = useApp();
 
   return (
     <Fragment>
@@ -22,7 +21,7 @@ const App = () => {
         animated
       />
       <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <PaperProvider theme={createTheme(isDark, fontFamily)}>
+        <PaperProvider theme={paperTheme}>
           <NavigationContainer>
             <AppStack />
           </NavigationContainer>

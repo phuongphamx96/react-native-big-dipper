@@ -1,1 +1,1 @@
-export { default as useBaseDialog } from './base_dialog';
+export { useBaseDialog } from './base_dialog';

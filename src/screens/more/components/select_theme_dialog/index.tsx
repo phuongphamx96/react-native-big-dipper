@@ -7,7 +7,7 @@ import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useSelectTheme } from './hooks';
 
-const useSelectThemeDialog = () => {
+export const useSelectThemeDialog = () => {
   const { t } = useTranslation();
   const { options, theme, onSelectTheme } = useSelectTheme();
 
@@ -59,5 +59,3 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
 });
-
-export default useSelectThemeDialog;

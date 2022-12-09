@@ -7,7 +7,7 @@ import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useDateFormat } from './hooks';
 
-const useSelectDateFormatDialog = () => {
+export const useSelectDateFormatDialog = () => {
   const { t } = useTranslation();
   const { options, dateFormat, onSelectDateFormat } = useDateFormat();
 
@@ -59,5 +59,3 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
 });
-
-export default useSelectDateFormatDialog;

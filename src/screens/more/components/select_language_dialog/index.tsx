@@ -7,7 +7,7 @@ import { RadioButton, TouchableRipple } from 'react-native-paper';
 
 import { useSelectLanguage } from './hooks';
 
-const useSelectLanguageDialog = () => {
+export const useSelectLanguageDialog = () => {
   const { t } = useTranslation();
   const { options, language, onSelectLanguage } = useSelectLanguage();
 
@@ -59,5 +59,3 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
 });
-
-export default useSelectLanguageDialog;

@@ -6,7 +6,7 @@ import { Dialog } from 'react-native-paper';
 
 import { BaseDialogProps } from './types';
 
-const useBaseDialog = ({
+export const useBaseDialog = ({
   dialog,
   icon,
   title,
@@ -76,5 +76,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
 });
-
-export default useBaseDialog;

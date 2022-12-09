@@ -24,6 +24,8 @@ import { hide } from 'react-native-bootsplash';
 import { useOrientationChange } from 'react-native-orientation-locker';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
+import { createTheme } from './utils';
+
 export const useApp = () => {
   const deviceColorScheme = useColorScheme();
   const setOrientationType = useSetRecoilState(orientationTypeState);
@@ -36,6 +38,8 @@ export const useApp = () => {
   const isDark = equals(theme, Theme.SYSTEM_DEFAULT)
     ? equals(deviceColorScheme, Theme.DARK)
     : equals(theme, Theme.DARK);
+
+  const paperTheme = createTheme(isDark, fontFamily);
 
   useEffect(() => {
     const initApp = async () => {
@@ -76,7 +80,5 @@ export const useApp = () => {
     setOrientationType(orientationType);
   });
 
-  return { isDark, fontFamily };
+  return { isDark, paperTheme };
 };
-
-export default useApp;
