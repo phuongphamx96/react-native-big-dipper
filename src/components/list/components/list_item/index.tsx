@@ -1,9 +1,9 @@
-import Text from '@rnbd/components/text';
 import { FC, memo, useCallback } from 'react';
 import { List } from 'react-native-paper';
-import { IconSource } from 'react-native-paper/lib/typescript/components/Icon';
 
-import { ListItemProps, TextProps } from './types';
+import { FormattedText } from './components';
+import { TextProps } from './components/formatted_text/types';
+import { ListItemProps } from './types';
 
 const ListItem: FC<ListItemProps> = ({
   formattedTitle,
@@ -16,55 +16,41 @@ const ListItem: FC<ListItemProps> = ({
   right,
   ...rest
 }) => {
-  const renderFormattedText = useCallback(
-    (props: TextProps, formattedText: string) => {
-      return (
-        <Text
-          selectable={props.selectable}
-          ellipsizeMode={props.ellipsizeMode}
-          style={{ color: props.color, fontSize: props.fontSize }}>
-          {formattedText}
-        </Text>
-      );
+  const renderFormattedTitle = useCallback(
+    (props: TextProps) => {
+      return <FormattedText {...props} text={formattedTitle} />;
     },
-    [],
+    [formattedTitle],
   );
 
-  const renderIcon = useCallback((icon: IconSource) => {
-    return <List.Icon icon={icon} />;
-  }, []);
+  const renderFormattedDescription = useCallback(
+    (props: TextProps) => {
+      return <FormattedText {...props} text={formattedDescription} />;
+    },
+    [formattedDescription],
+  );
+
+  const renderLeftIcon = useCallback(() => {
+    if (leftIcon) {
+      return <List.Icon icon={leftIcon} />;
+    }
+  }, [leftIcon]);
+
+  const renderRightIcon = useCallback(() => {
+    if (rightIcon) {
+      return <List.Icon icon={rightIcon} />;
+    }
+  }, [rightIcon]);
 
   return (
     <List.Item
       {...rest}
-      title={
-        formattedTitle
-          ? (props) => {
-              return renderFormattedText(props, formattedTitle);
-            }
-          : title
-      }
+      title={formattedTitle ? renderFormattedTitle : title}
       description={
-        formattedDescription
-          ? (props) => {
-              return renderFormattedText(props, formattedDescription);
-            }
-          : description
+        formattedDescription ? renderFormattedDescription : description
       }
-      left={
-        leftIcon
-          ? () => {
-              return renderIcon(leftIcon);
-            }
-          : left
-      }
-      right={
-        rightIcon
-          ? () => {
-              return renderIcon(rightIcon);
-            }
-          : right
-      }
+      left={leftIcon ? renderLeftIcon : left}
+      right={rightIcon ? renderRightIcon : right}
     />
   );
 };

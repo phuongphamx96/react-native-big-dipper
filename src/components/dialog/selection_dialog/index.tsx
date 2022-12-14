@@ -1,8 +1,8 @@
+import Text from '@rnbd/components/text';
 import { Fragment, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { RadioButton, TouchableRipple } from 'react-native-paper';
 
-import Text from '../../text';
 import { useBaseDialog } from '../base_dialog';
 import { SelectionDialogProps } from './types';
 
