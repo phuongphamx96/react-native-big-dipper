@@ -3,7 +3,7 @@ import {
   createBottomTabNavigator,
 } from '@react-navigation/bottom-tabs';
 import { MoreScreen, OverviewScreen } from '@rnbd/screens';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 
 import { MORE_SCREEN, OVERVIEW_SCREEN } from '../../utils';
 import { BottomTabBar } from './components';
@@ -11,9 +11,9 @@ import { BottomTabBar } from './components';
 const { Navigator, Screen } = createBottomTabNavigator();
 
 const BottomTab = () => {
-  const renderTabBar = (props: BottomTabBarProps) => {
+  const renderTabBar = useCallback((props: BottomTabBarProps) => {
     return <BottomTabBar {...props} />;
-  };
+  }, []);
 
   return (
     <Navigator

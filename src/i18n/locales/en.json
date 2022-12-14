@@ -43,7 +43,7 @@
       "selectFontFamilyDialog": {
         "title": "Select font family"
       },
-      "SelectLanguageDialog": {
+      "selectLanguageDialog": {
         "title": "Select language"
       },
       "selectThemeDialog": {

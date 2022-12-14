@@ -1,5 +1,5 @@
 import Button from '@rnbd/components/button';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet } from 'react-native';
 import { Dialog } from 'react-native-paper';
@@ -20,19 +20,19 @@ export const useBaseDialog = ({
 
   const [visible, setVisible] = useState(false);
 
-  const open = () => {
+  const open = useCallback(() => {
     if (onOpen) {
       onOpen();
     }
     setVisible(true);
-  };
+  }, [onOpen]);
 
-  const close = () => {
+  const close = useCallback(() => {
     if (onClose) {
       onClose();
     }
     setVisible(false);
-  };
+  }, [onClose]);
 
   const render = () => {
     return (

@@ -1,5 +1,5 @@
 import Text from '@rnbd/components/text';
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { List } from 'react-native-paper';
 import { IconSource } from 'react-native-paper/lib/typescript/components/Icon';
 
@@ -16,20 +16,23 @@ const ListItem: FC<ListItemProps> = ({
   right,
   ...rest
 }) => {
-  const renderFormattedText = (props: TextProps, formattedText: string) => {
-    return (
-      <Text
-        selectable={props.selectable}
-        ellipsizeMode={props.ellipsizeMode}
-        style={{ color: props.color, fontSize: props.fontSize }}>
-        {formattedText}
-      </Text>
-    );
-  };
+  const renderFormattedText = useCallback(
+    (props: TextProps, formattedText: string) => {
+      return (
+        <Text
+          selectable={props.selectable}
+          ellipsizeMode={props.ellipsizeMode}
+          style={{ color: props.color, fontSize: props.fontSize }}>
+          {formattedText}
+        </Text>
+      );
+    },
+    [],
+  );
 
-  const renderIcon = (icon: IconSource) => {
+  const renderIcon = useCallback((icon: IconSource) => {
     return <List.Icon icon={icon} />;
-  };
+  }, []);
 
   return (
     <List.Item

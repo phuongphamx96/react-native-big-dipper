@@ -17,11 +17,16 @@ const More = () => {
     <Fragment>
       <Screen>
         <ScrollView>
-          {sections.map((section, sectionIndex) => {
+          {sections.map((section) => {
             return (
-              <PaperList.Section key={sectionIndex} title={section.title}>
-                {section.items.map((sectionItem, sectionItemIndex) => {
-                  return <List.Item key={sectionItemIndex} {...sectionItem} />;
+              <PaperList.Section key={section.title} title={section.title}>
+                {section.items.map((sectionItem) => {
+                  return (
+                    <List.Item
+                      key={sectionItem.formattedTitle}
+                      {...sectionItem}
+                    />
+                  );
                 })}
               </PaperList.Section>
             );

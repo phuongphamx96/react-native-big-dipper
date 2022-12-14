@@ -18,8 +18,10 @@ const Screen: FC<ScreenProps> = ({ children, header }) => {
         <Appbar.Header style={{ backgroundColor: headerBackgroundColor }}>
           {header.canBack && <Appbar.BackAction onPress={navigation.goBack} />}
           <Appbar.Content {...header.content} />
-          {header.action?.map((action, index) => {
-            return <Appbar.Action key={index} {...action} />;
+          {header.actions?.map((action) => {
+            return (
+              <Appbar.Action key={action.accessibilityLabel} {...action} />
+            );
           })}
         </Appbar.Header>
       );

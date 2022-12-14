@@ -6,6 +6,6 @@ export type ScreenProps = {
   header?: {
     canBack?: boolean;
     content: Omit<AppbarContentProps, 'theme'>;
-    action?: AppbarActionProps[];
+    actions?: AppbarActionProps[];
   };
 };
