@@ -1,5 +1,5 @@
 import { FontFamily, fontFamilyState } from '@rnbd/recoil/settings';
-import { equals } from 'ramda';
+import { and, equals, includes } from 'ramda';
 import { MD3Theme, useTheme as usePaperTheme } from 'react-native-paper';
 import { useRecoilValue } from 'recoil';
 
@@ -24,7 +24,7 @@ export const getFontFamilyName = (
     return undefined;
   }
 
-  return variant && mediumVariants.includes(variant)
+  return and(variant, includes(variant, mediumVariants))
     ? `${fontFamily}-Medium`
     : `${fontFamily}-Regular`;
 };

@@ -1,5 +1,5 @@
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { equals } from 'ramda';
+import { and, equals } from 'ramda';
 import { useTranslation } from 'react-i18next';
 
 export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
@@ -29,7 +29,7 @@ export const useBottomTabBar = ({ state, navigation }: BottomTabBarProps) => {
       canPreventDefault: true,
     });
 
-    if (!isFocused && !event.defaultPrevented) {
+    if (and(!isFocused, !event.defaultPrevented)) {
       navigation.navigate(newRoute.name);
     }
   };
